@@ -599,11 +599,18 @@ int main(argc,argv)
         }
     }
 
+#define USE32
+
     if (zipfilename!=NULL)
     {
 
 #        ifdef USEWIN32IOAPI
-        zlib_filefunc64_def ffunc;
+#ifdef USE32
+		zlib_filefunc_def ffunc;
+#else
+		zlib_filefunc64_def ffunc;
+#endif
+        
 #        endif
 
         strncpy(filename_try, zipfilename,MAXFILENAME-1);
@@ -611,8 +618,15 @@ int main(argc,argv)
         filename_try[ MAXFILENAME ] = '\0';
 
 #        ifdef USEWIN32IOAPI
-        fill_win32_filefunc64A(&ffunc);
-        uf = unzOpen2_64(zipfilename,&ffunc);
+#ifdef USE32
+		fill_win32_filefunc(&ffunc);
+		uf = unzOpen2(zipfilename,&ffunc);
+#else
+		fill_win32_filefunc64A(&ffunc);
+		uf = unzOpen2_64(zipfilename,&ffunc);
+#endif
+		
+		
 #        else
         uf = unzOpen64(zipfilename);
 #        endif
@@ -620,7 +634,12 @@ int main(argc,argv)
         {
             strcat(filename_try,".zip");
 #            ifdef USEWIN32IOAPI
-            uf = unzOpen2_64(filename_try,&ffunc);
+
+#ifdef USE32
+			uf = unzOpen2(filename_try,&ffunc);
+#else
+			uf = unzOpen2_64(filename_try,&ffunc);
+#endif
 #            else
             uf = unzOpen64(filename_try);
 #            endif

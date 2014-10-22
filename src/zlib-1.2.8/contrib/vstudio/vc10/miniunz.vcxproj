@@ -138,7 +138,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>x86\ZlibDllDebug\zlibwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>x86\ZlibDllDebug\zlibwapid.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)miniunz.exe</OutputFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(OutDir)miniunz.pdb</ProgramDatabaseFile>

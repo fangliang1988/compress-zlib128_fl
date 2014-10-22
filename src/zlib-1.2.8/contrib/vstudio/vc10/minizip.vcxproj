@@ -135,7 +135,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>x86\ZlibDllDebug\zlibwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>x86\ZlibDllDebug\zlibwapid.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)minizip.exe</OutputFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(OutDir)minizip.pdb</ProgramDatabaseFile>
